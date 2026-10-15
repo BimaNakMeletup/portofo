@@ -640,76 +640,88 @@
     /* Floating 3D RPG Badges with depth layers */
     .pixel-badge {
       position: absolute;
-      background: var(--bg);
+      background: var(--surface);
       border: 3px solid var(--accent2);
-      padding: .45rem .9rem;
+      padding: .45rem .85rem;
       font-family: var(--pixel-font-heading);
-      font-size: .75rem;
+      font-size: .72rem;
       color: var(--accent3);
       box-shadow: 5px 5px 0px #000;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: .4rem;
       white-space: nowrap;
       z-index: 10;
       transform-style: preserve-3d;
       animation: pixelFloat3D 3.5s steps(6) infinite alternate;
+      pointer-events: auto;
     }
 
     .pixel-badge::before {
       content: '▶';
-      color: var(--accent2);
-      font-size: .7rem;
+      font-size: .65rem;
     }
 
     .hero-badges-row {
-      display: contents;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      transform-style: preserve-3d;
     }
 
-    .pixel-badge.badge-1,
-    .pixel-badge:nth-child(2) {
+    .pixel-badge.badge-1 {
       top: -18px;
-      left: -25px;
-      transform: translateZ(50px);
+      left: -22px;
+      right: auto;
+      bottom: auto;
+      border-color: var(--accent2);
+      color: var(--accent3);
       animation-delay: 0s;
     }
 
-    .pixel-badge.badge-2,
-    .pixel-badge:nth-child(3) {
-      top: 25px;
-      right: -35px;
+    .pixel-badge.badge-1::before {
+      color: var(--accent2);
+    }
+
+    .pixel-badge.badge-2 {
+      top: 155px;
+      right: -32px;
+      left: auto;
+      bottom: auto;
       border-color: var(--accent);
       color: var(--accent);
-      transform: translateZ(70px);
-      animation-delay: .8s;
+      animation-delay: .9s;
     }
 
-    .pixel-badge.badge-3,
-    .pixel-badge:nth-child(4) {
+    .pixel-badge.badge-2::before {
+      color: var(--accent);
+    }
+
+    .pixel-badge.badge-3 {
       bottom: -18px;
-      left: -25px;
+      left: -22px;
+      top: auto;
+      right: auto;
       border-color: var(--accent4);
       color: var(--accent4);
-      transform: translateZ(60px);
-      animation-delay: 1.6s;
+      animation-delay: 1.8s;
     }
 
-    .pixel-badge:nth-child(5) {
-      bottom: -18px;
-      right: -20px;
-      border-color: var(--accent3);
-      color: var(--accent3);
-      transform: translateZ(80px);
-      animation-delay: 2.4s;
+    .pixel-badge.badge-3::before {
+      color: var(--accent4);
+    }
+
+    [data-theme="light"] .pixel-badge.badge-1 {
+      color: var(--accent2);
     }
 
     @keyframes pixelFloat3D {
       0% {
-        transform: translateZ(60px) translateY(0)
+        transform: translateZ(60px) translateY(0);
       }
 
       100% {
-        transform: translateZ(80px) translateY(-10px)
+        transform: translateZ(80px) translateY(-10px);
       }
     }
 
@@ -1840,16 +1852,23 @@
       }
 
       .hero-badges-row {
+        position: static !important;
+        inset: auto !important;
         display: flex !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
         gap: .6rem !important;
         width: 100% !important;
         max-width: 500px !important;
+        pointer-events: auto !important;
       }
 
       .pixel-badge {
         position: static !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        left: auto !important;
         transform: none !important;
         animation: none !important;
         font-size: .72rem !important;
@@ -2084,16 +2103,23 @@
       }
 
       .hero-badges-row {
+        position: static !important;
+        inset: auto !important;
         display: flex !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
         gap: .5rem !important;
         width: 100% !important;
         margin-top: .6rem !important;
+        pointer-events: auto !important;
       }
 
       .pixel-badge {
         position: static !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        left: auto !important;
         transform: none !important;
         animation: none !important;
         font-size: .72rem !important;
@@ -2480,7 +2506,7 @@
         <div class="avatar-stage tilt-3d" id="avatarStage">
           <div class="avatar-frame-outer">
             <div class="avatar-img-wrap">
-              <img src="foto.jpeg" alt="Bima — Developer Profile Pixel">
+              <img src="foto.jpeg" alt="Bima — Developer Profile Pixel" loading="eager" decoding="async">
             </div>
           </div>
           <div class="hero-badges-row">
